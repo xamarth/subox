@@ -12,7 +12,11 @@ export default function Settings() {
   const { user } = useUser();
 
   const handleSignOut = async () => {
-    await signOut();
+    try {
+      await signOut();
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
   };
 
   const displayName = user?.firstName || user?.fullName || user?.emailAddresses?.[0]?.emailAddress || 'User';
