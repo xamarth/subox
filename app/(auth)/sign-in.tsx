@@ -1,7 +1,12 @@
-import { Link } from 'expo-router'
+import { Link, Redirect } from 'expo-router'
 import { Text, View } from 'react-native'
 
 export default function SignIn() {
+  if (!false) {
+    return (
+      <Redirect href="/" />
+    )
+  }
   return (
     <View>
       <Text>sign-in</Text>
