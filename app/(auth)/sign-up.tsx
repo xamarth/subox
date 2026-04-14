@@ -163,6 +163,14 @@ export default function SignUp() {
                   >
                     <Text className="auth-secondary-button-text">Resend Code</Text>
                   </Pressable>
+
+                  <Pressable
+                    className="auth-secondary-button"
+                    onPress={() => signUp.reset()}
+                    disabled={fetchStatus === 'fetching'}
+                  >
+                    <Text className="auth-secondary-button-text">Start Over</Text>
+                  </Pressable>
                 </View>
               </View>
             </View>
