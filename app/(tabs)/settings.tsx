@@ -1,5 +1,5 @@
 import images from '@/constants/images';
-import { useClerk, useUser } from '@clerk/expo';
+// import { useClerk, useUser } from '@clerk/expo';
 import { styled } from "nativewind";
 import { Image, Pressable, Text, View } from 'react-native';
 import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
@@ -8,19 +8,20 @@ const SafeAreaView = styled(RNSafeAreaView);
 
 export default function Settings() {
 
-  const { signOut } = useClerk();
-  const { user } = useUser();
+  // const { signOut } = useClerk();
+  // const { user } = useUser();
 
   const handleSignOut = async () => {
     try {
-      await signOut();
+      // await signOut();
+      console.log('User signed out successfully');
     } catch (error) {
       console.error('Error signing out:', error);
     }
   };
 
-  const displayName = user?.firstName || user?.fullName || user?.emailAddresses?.[0]?.emailAddress || 'User';
-  const email = user?.emailAddresses?.[0]?.emailAddress;
+  const displayName = 'OreO'; // user?.firstName || user?.fullName || user?.emailAddresses?.[0]?.emailAddress || 'User';
+  const email = 'oreo@oreo.com'; // user?.emailAddresses?.[0]?.emailAddress;
 
   return (
     <SafeAreaView className="flex-1 bg-background p-5">
@@ -30,8 +31,9 @@ export default function Settings() {
       <View className="auth-card mb-5">
         <View className="flex-row items-center gap-4 mb-4">
           <Image
-            source={user?.imageUrl ? { uri: user.imageUrl } : images.avatar}
+            source={images.avatar}
             className="size-16 rounded-full"
+          // source={user?.imageUrl ? { uri: user.imageUrl } : images.avatar}
           />
           <View className="flex-1">
             <Text className="text-lg font-sans-bold text-primary">{displayName}</Text>
@@ -50,13 +52,15 @@ export default function Settings() {
             <Text className="text-sm font-sans-medium text-muted-foreground">Account ID</Text>
             <Text className="text-sm font-sans-medium text-primary" numberOfLines={1} ellipsizeMode="tail">
               {/* {user?.id?.substring(0, 20)}... */}
-              {user?.id ?? 'N/A'}
+              {/* {user?.id ?? 'N/A'} */}
+              {`abc123def456`}
             </Text>
           </View>
           <View className="flex-row justify-between items-center py-2">
             <Text className="text-sm font-sans-medium text-muted-foreground">Joined</Text>
             <Text className="text-sm font-sans-medium text-primary">
-              {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}
+              {/* {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'} */}
+              {`25/04/2026`}
             </Text>
           </View>
         </View>

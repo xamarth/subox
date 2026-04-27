@@ -50,7 +50,7 @@ export default function CreateSubscriptionModal({ visible, onClose, onSubmit }: 
       id: `sub-${Date.now()}`,
       name: name.trim(),
       price: priceValue,
-      currency: 'USD',
+      currency: 'INR',
       frequency,
       category,
       status: 'active',

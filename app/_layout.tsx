@@ -1,21 +1,21 @@
 import "@/global.css";
-import { ClerkProvider, useAuth } from "@clerk/expo";
-import { tokenCache } from "@clerk/expo/token-cache";
+// import { ClerkProvider, useAuth } from "@clerk/expo";
+// import { tokenCache } from "@clerk/expo/token-cache";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack, useGlobalSearchParams, usePathname } from "expo-router";
 import { useEffect, useRef } from "react";
 
 SplashScreen.preventAutoHideAsync();
 
-const pubKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
+// const pubKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
 
-if (!pubKey) {
-  throw new Error("Missing Clerk publishable key. Please add it to your environment variables.");
-}
+// if (!pubKey) {
+//   throw new Error("Missing Clerk publishable key. Please add it to your environment variables.");
+// }
 
 function RootLayoutContent() {
 
-  const { isLoaded: authLoaded } = useAuth();
+  // const { isLoaded: authLoaded } = useAuth();
   const pathname = usePathname();
   const params = useGlobalSearchParams();
   const previousPathname = useRef<string | undefined>(undefined);
@@ -36,12 +36,15 @@ function RootLayoutContent() {
   })
 
   useEffect(() => {
-    if (fontsLoaded && authLoaded) {
+    // if (fontsLoaded && authLoaded) {
+    if (fontsLoaded) {
       SplashScreen.hideAsync();
     }
-  }, [fontsLoaded, authLoaded]);
+  }, [fontsLoaded]);
+  // }, [fontsLoaded, authLoaded]);
 
-  if (!fontsLoaded || !authLoaded) {
+  // if (!fontsLoaded || !authLoaded) {
+  if (!fontsLoaded) {
     return null;
   }
 
@@ -52,8 +55,7 @@ function RootLayoutContent() {
 
 export default function RootLayout() {
   return (
-    <ClerkProvider publishableKey={pubKey} tokenCache={tokenCache}>
-      <RootLayoutContent />
-    </ClerkProvider>
+    <RootLayoutContent />
+    // <ClerkProvider publishableKey={pubKey} tokenCache={tokenCache}></ClerkProvider>
   );
 }

@@ -7,7 +7,7 @@ import { icons } from "@/constants/icons";
 import images from "@/constants/images";
 import { useSubscriptionStore } from "@/lib/subscriptionStore";
 import { formatCurrency } from "@/lib/utils";
-import { useUser } from "@clerk/expo";
+// import { useUser } from "@clerk/expo";
 import dayjs from "dayjs";
 import { styled } from "nativewind";
 import { useState } from "react";
@@ -18,7 +18,7 @@ const SafeAreaView = styled(RNSafeAreaView);
 
 export default function App() {
 
-  const { user } = useUser();
+  // const { user } = useUser();
 
   const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<string | null>(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -28,7 +28,8 @@ export default function App() {
     addSubscription(newSubscription);
   }
 
-  const displayName = user?.firstName || user?.fullName || user?.emailAddresses[0]?.emailAddress || 'User';
+  const displayName = 'OreO';
+  // const displayName = user?.firstName || user?.fullName || user?.emailAddresses[0]?.emailAddress || 'User';
 
   return (
     <SafeAreaView className="flex-1 bg-background p-5">
@@ -37,7 +38,11 @@ export default function App() {
           <>
             <View className="home-header">
               <View className="home-user">
-                <Image source={user?.imageUrl ? { uri: user.imageUrl } : images.avatar} className="home-avatar" />
+                <Image
+                  className="home-avatar"
+                  // source={user?.imageUrl ? { uri: user.imageUrl } : images.avatar}
+                  source={images.avatar}
+                />
                 <Text className="home-user-name">{displayName}</Text>
               </View>
               <Pressable className="home-add-button" onPress={() => setIsModalVisible(true)}>
@@ -46,13 +51,19 @@ export default function App() {
             </View>
 
             <View className="home-balance-card">
-              <Text className="home-balance-label">Balance</Text>
+              <View>
+                <Text className="home-balance-label font-bold">Upcoming Charges</Text>
+                <Text className="home-balance-label">Total Subscriptions: {subscriptions.length}</Text>
+                <Text className="home-balance-label">Active Subscriptions: {subscriptions.filter((s) => s.status === "active").length}</Text>
+                <Text className="home-balance-label">Paused Subscriptions: {subscriptions.filter((s) => s.status === "paused").length}</Text>
+                <Text className="home-balance-label">Cancelled Subscriptions: {subscriptions.filter((s) => s.status === "cancelled").length}</Text>
+              </View>
               <View className="home-balance-row">
                 <Text className="home-balance-amount">
                   {formatCurrency(HOME_BALANCE.amount)}
                 </Text>
                 <Text className="home-balance-date">
-                  {dayjs(HOME_BALANCE.nextRenewalDate).format("DD/MM")}
+                  {dayjs(HOME_BALANCE.nextRenewalDate).format("DD/MM/YYYY")}
                 </Text>
               </View>
             </View>
