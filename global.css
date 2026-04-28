@@ -122,6 +122,135 @@
     @apply text-lg font-sans-semibold text-primary;
   }
 
+  .insights-screen {
+    @apply flex-1 bg-background px-5 pt-4;
+  }
+
+  .insights-header {
+    @apply mb-2 items-center justify-center py-2;
+  }
+
+  .insights-title {
+    @apply text-xl font-sans-bold text-primary;
+  }
+
+  .insights-chart-card {
+    @apply relative mt-2 rounded-3xl bg-muted px-4 pb-4 pt-3;
+  }
+
+  .insights-chart-grid {
+    @apply absolute left-4 right-4 top-4 h-40;
+  }
+
+  .insights-chart-gridline {
+    @apply absolute left-0 right-0 border-t border-black/10;
+    border-style: dashed;
+  }
+
+  .insights-chart-ylabels {
+    @apply absolute left-0 top-0 bottom-0 w-8 justify-between pb-2 pt-0;
+  }
+
+  .insights-chart-ylabel {
+    @apply text-xs font-sans-semibold text-muted-foreground;
+  }
+
+  .insights-chart-bars {
+    @apply mt-6 h-48 flex-row items-end justify-between pl-9;
+  }
+
+  .insights-chart-bar-col {
+    @apply w-8 items-center;
+  }
+
+  .insights-chart-bar-wrap {
+    @apply relative h-40 w-full items-center justify-end;
+  }
+
+  .insights-bar {
+    @apply w-3 rounded-full bg-primary;
+  }
+
+  .insights-bar-highlight {
+    @apply bg-accent;
+  }
+
+  .insights-bar-pill {
+    @apply absolute -top-6 items-center justify-center rounded-full bg-background px-3 py-1;
+  }
+
+  .insights-bar-pill-text {
+    @apply text-xs font-sans-bold text-accent;
+  }
+
+  .insights-chart-xlabel {
+    @apply mt-3 text-xs font-sans-semibold text-muted-foreground;
+  }
+
+  .insights-expense-card {
+    @apply mt-5 flex-row items-center justify-between rounded-3xl border border-border bg-card px-5 py-4;
+  }
+
+  .insights-expense-left {
+    @apply gap-1;
+  }
+
+  .insights-expense-title {
+    @apply text-lg font-sans-bold text-primary;
+  }
+
+  .insights-expense-meta {
+    @apply text-sm font-sans-semibold text-accent;
+  }
+
+  .insights-expense-right {
+    @apply items-end gap-1;
+  }
+
+  .insights-expense-amount {
+    @apply text-lg font-sans-bold text-primary;
+  }
+
+  .insights-expense-delta {
+    @apply text-sm font-sans-semibold text-accent;
+  }
+
+  .insights-history-row {
+    @apply flex-row items-center justify-between rounded-2xl px-4 py-4;
+  }
+
+  .insights-history-left {
+    @apply min-w-0 flex-1 flex-row items-center gap-3;
+  }
+
+  .insights-history-icon {
+    @apply size-12;
+  }
+
+  .insights-history-copy {
+    @apply min-w-0 flex-1;
+  }
+
+  .insights-history-title {
+    @apply text-base font-sans-bold text-primary;
+  }
+
+  .insights-history-meta {
+    @apply mt-1 text-xs font-sans-semibold text-muted-foreground;
+  }
+
+  .insights-history-right {
+    @apply ml-3 items-end;
+  }
+
+  .insights-history-price {
+    @apply text-base font-sans-bold text-primary;
+  }
+
+  .insights-history-cadence {
+    @apply mt-1 text-xs font-sans-semibold text-muted-foreground;
+  }
+
   .upcoming-card {
     @apply mr-4 w-44 rounded-2xl border border-black/10 bg-background p-4;
   }

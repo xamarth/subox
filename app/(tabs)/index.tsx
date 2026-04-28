@@ -8,7 +8,7 @@ import images from "@/constants/images";
 import { useSubscriptionStore } from "@/lib/subscriptionStore";
 import { formatCurrency } from "@/lib/utils";
 import { useUser } from "@clerk/expo";
-import dayjs from "dayjs";
+// import dayjs from "dayjs";
 import { styled } from "nativewind";
 import { useState } from "react";
 import { FlatList, Image, Pressable, Text, View } from "react-native";
@@ -46,13 +46,21 @@ export default function App() {
             </View>
 
             <View className="home-balance-card">
-              <Text className="home-balance-label">Balance</Text>
+              {/* <Text className="home-balance-label">Balance</Text> */}
+              <View>
+                <Text className="home-balance-label font-bold">Upcoming Charges</Text>
+                <Text className="home-balance-label">Total Subscriptions: {subscriptions.length}</Text>
+                <Text className="home-balance-label">Active Subscriptions: {subscriptions.filter((s) => s.status === "active").length}</Text>
+                <Text className="home-balance-label">Paused Subscriptions: {subscriptions.filter((s) => s.status === "paused").length}</Text>
+                <Text className="home-balance-label">Cancelled Subscriptions: {subscriptions.filter((s) => s.status === "cancelled").length}</Text>
+              </View>
               <View className="home-balance-row">
                 <Text className="home-balance-amount">
                   {formatCurrency(HOME_BALANCE.amount)}
                 </Text>
                 <Text className="home-balance-date">
-                  {dayjs(HOME_BALANCE.nextRenewalDate).format("DD/MM")}
+                  {/* {`Next Renewal Date: ` + dayjs(HOME_BALANCE.nextRenewalDate).format("DD/MM")} */}
+                  {`Next Renewal Date: ` + `NA`}
                 </Text>
               </View>
             </View>

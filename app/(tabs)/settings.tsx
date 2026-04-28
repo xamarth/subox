@@ -19,6 +19,7 @@ export default function Settings() {
     }
   };
 
+  // const displayName = 'OreO';
   const displayName = user?.firstName || user?.fullName || user?.emailAddresses?.[0]?.emailAddress || 'User';
   const email = user?.emailAddresses?.[0]?.emailAddress;
 
@@ -26,7 +27,7 @@ export default function Settings() {
     <SafeAreaView className="flex-1 bg-background p-5">
       <Text className="text-3xl font-sans-bold text-primary mb-6">Settings</Text>
 
-      {/* User Profile Section */}
+      {/* xamarth */}
       <View className="auth-card mb-5">
         <View className="flex-row items-center gap-4 mb-4">
           <Image

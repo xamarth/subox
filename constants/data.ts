@@ -12,8 +12,8 @@ export const HOME_USER = {
 };
 
 export const HOME_BALANCE = {
-  amount: 2489.48,
-  nextRenewalDate: "2026-03-18T09:00:00.000Z",
+  amount: 0,
+  nextRenewalDate: "2026-04-01T09:00:00.000Z",
 };
 
 export const UPCOMING_SUBSCRIPTIONS: UpcomingSubscription[] = [
@@ -51,7 +51,7 @@ export const HOME_SUBSCRIPTIONS: Subscription[] = [
     plan: "Teams Plan",
     category: "Design",
     paymentMethod: "Visa ending in 8530",
-    status: "active",
+    status: "paused",
     startDate: "2025-03-20T10:00:00.000Z",
     price: 77.49,
     currency: "USD",
@@ -66,7 +66,7 @@ export const HOME_SUBSCRIPTIONS: Subscription[] = [
     plan: "Developer",
     category: "Developer Tools",
     paymentMethod: "Mastercard ending in 2408",
-    status: "active",
+    status: "paused",
     startDate: "2024-11-24T10:00:00.000Z",
     price: 9.99,
     currency: "USD",
@@ -105,3 +105,40 @@ export const HOME_SUBSCRIPTIONS: Subscription[] = [
     color: "#b8e8d0",
   },
 ];
+
+export const INSIGHTS_MOCK = {
+  weeklyUpcoming: [
+    { day: "Mon", value: 36 },
+    { day: "Tue", value: 31 },
+    { day: "Wed", value: 22 },
+    { day: "Thu", value: 40, highlight: true },
+    { day: "Fri", value: 34 },
+    { day: "Sat", value: 20 },
+    { day: "Sun", value: 23 },
+  ] as const,
+  expensesSummary: {
+    monthLabel: "March 2026",
+    amount: -424.63,
+    deltaPct: 12,
+  } as const,
+  history: [
+    {
+      id: "history-claude",
+      icon: icons.claude,
+      name: "Claude",
+      dateLabel: "March 25, 12:00",
+      price: 9.84,
+      cadenceLabel: "per month",
+      color: "#f5c542",
+    },
+    {
+      id: "history-canva",
+      icon: icons.canva,
+      name: "Canva",
+      dateLabel: "March 30, 16:00",
+      price: 43.89,
+      cadenceLabel: "per month",
+      color: "#8fd1bd",
+    },
+  ] as const,
+} as const;

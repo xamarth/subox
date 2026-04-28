@@ -79,105 +79,108 @@ export default function CreateSubscriptionModal({ visible, onClose, onSubmit }: 
   };
 
   return (
-    <Modal
-      visible={visible}
-      transparent
-      animationType="slide"
-      onRequestClose={handleClose}
-    >
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        className="flex-1"
-        keyboardVerticalOffset={0}
+    <>
+      <Modal
+        visible={visible}
+        transparent
+        animationType="slide"
+        onRequestClose={handleClose}
       >
-        <Pressable className="modal-overlay" onPress={handleClose}>
-          <Pressable className="modal-container" onPress={(e) => e.stopPropagation()}>
-            <View className="modal-header">
-              <Text className="modal-title">New Subscription</Text>
-              <Pressable className="modal-close" onPress={handleClose}>
-                <Text className="modal-close-text">✕</Text>
-              </Pressable>
-            </View>
-
-            <ScrollView
-              className="p-5"
-              showsVerticalScrollIndicator={false}
-              keyboardShouldPersistTaps="handled"
-              contentContainerStyle={{ gap: 20, paddingBottom: 20 }}
-            >
-              <View className="auth-field">
-                <Text className="auth-label">Name</Text>
-                <TextInput
-                  className="auth-input"
-                  placeholder="Subscription name"
-                  placeholderTextColor="rgba(0, 0, 0, 0.4)"
-                  value={name}
-                  onChangeText={setName}
-                />
+        <View className="absolute -z-1 h-full w-full bg-[#00000080] top-0 left-0 right-0 bottom-0" />
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          className="flex-1"
+          keyboardVerticalOffset={0}
+        >
+          <Pressable className="modal-overlay" onPress={handleClose}>
+            <Pressable className="modal-container" onPress={(e) => e.stopPropagation()}>
+              <View className="modal-header">
+                <Text className="modal-title">New Subscription</Text>
+                <Pressable className="modal-close" onPress={handleClose}>
+                  <Text className="modal-close-text">✕</Text>
+                </Pressable>
               </View>
 
-              <View className="auth-field">
-                <Text className="auth-label">Price</Text>
-                <TextInput
-                  className="auth-input"
-                  placeholder="0.00"
-                  placeholderTextColor="rgba(0, 0, 0, 0.4)"
-                  value={price}
-                  onChangeText={setPrice}
-                  keyboardType="decimal-pad"
-                />
-              </View>
-
-              <View className="auth-field">
-                <Text className="auth-label">Frequency</Text>
-                <View className="picker-row">
-                  <Pressable
-                    className={`picker-option ${frequency === 'Monthly' ? 'picker-option-active' : ''}`}
-                    onPress={() => setFrequency('Monthly')}
-                  >
-                    <Text className={`picker-option-text ${frequency === 'Monthly' ? 'picker-option-text-active' : ''}`}>
-                      Monthly
-                    </Text>
-                  </Pressable>
-                  <Pressable
-                    className={`picker-option ${frequency === 'Yearly' ? 'picker-option-active' : ''}`}
-                    onPress={() => setFrequency('Yearly')}
-                  >
-                    <Text className={`picker-option-text ${frequency === 'Yearly' ? 'picker-option-text-active' : ''}`}>
-                      Yearly
-                    </Text>
-                  </Pressable>
+              <ScrollView
+                className="p-5"
+                showsVerticalScrollIndicator={false}
+                keyboardShouldPersistTaps="handled"
+                contentContainerStyle={{ gap: 20, paddingBottom: 20 }}
+              >
+                <View className="auth-field">
+                  <Text className="auth-label">Name</Text>
+                  <TextInput
+                    className="auth-input"
+                    placeholder="Subscription name"
+                    placeholderTextColor="rgba(0, 0, 0, 0.4)"
+                    value={name}
+                    onChangeText={setName}
+                  />
                 </View>
-              </View>
 
-              <View className="auth-field">
-                <Text className="auth-label">Category</Text>
-                <View className="category-scroll">
-                  {CATEGORIES.map((cat) => (
+                <View className="auth-field">
+                  <Text className="auth-label">Price</Text>
+                  <TextInput
+                    className="auth-input"
+                    placeholder="0.00"
+                    placeholderTextColor="rgba(0, 0, 0, 0.4)"
+                    value={price}
+                    onChangeText={setPrice}
+                    keyboardType="decimal-pad"
+                  />
+                </View>
+
+                <View className="auth-field">
+                  <Text className="auth-label">Frequency</Text>
+                  <View className="picker-row">
                     <Pressable
-                      key={cat}
-                      className={`category-chip ${category === cat ? 'category-chip-active' : ''}`}
-                      onPress={() => setCategory(cat)}
+                      className={`picker-option ${frequency === 'Monthly' ? 'picker-option-active' : ''}`}
+                      onPress={() => setFrequency('Monthly')}
                     >
-                      <Text className={`category-chip-text ${category === cat ? 'category-chip-text-active' : ''}`}>
-                        {cat}
+                      <Text className={`picker-option-text ${frequency === 'Monthly' ? 'picker-option-text-active' : ''}`}>
+                        Monthly
                       </Text>
                     </Pressable>
-                  ))}
+                    <Pressable
+                      className={`picker-option ${frequency === 'Yearly' ? 'picker-option-active' : ''}`}
+                      onPress={() => setFrequency('Yearly')}
+                    >
+                      <Text className={`picker-option-text ${frequency === 'Yearly' ? 'picker-option-text-active' : ''}`}>
+                        Yearly
+                      </Text>
+                    </Pressable>
+                  </View>
                 </View>
-              </View>
 
-              <Pressable
-                className={`auth-button ${!isValidForm ? 'auth-button-disabled' : ''}`}
-                onPress={handleSubmit}
-                disabled={!isValidForm}
-              >
-                <Text className="auth-button-text">Create Subscription</Text>
-              </Pressable>
-            </ScrollView>
+                <View className="auth-field">
+                  <Text className="auth-label">Category</Text>
+                  <View className="category-scroll">
+                    {CATEGORIES.map((cat) => (
+                      <Pressable
+                        key={cat}
+                        className={`category-chip ${category === cat ? 'category-chip-active' : ''}`}
+                        onPress={() => setCategory(cat)}
+                      >
+                        <Text className={`category-chip-text ${category === cat ? 'category-chip-text-active' : ''}`}>
+                          {cat}
+                        </Text>
+                      </Pressable>
+                    ))}
+                  </View>
+                </View>
+
+                <Pressable
+                  className={`auth-button ${!isValidForm ? 'auth-button-disabled' : ''}`}
+                  onPress={handleSubmit}
+                  disabled={!isValidForm}
+                >
+                  <Text className="auth-button-text">Create Subscription</Text>
+                </Pressable>
+              </ScrollView>
+            </Pressable>
           </Pressable>
-        </Pressable>
-      </KeyboardAvoidingView>
-    </Modal>
+        </KeyboardAvoidingView>
+      </Modal>
+    </>
   );
 };
